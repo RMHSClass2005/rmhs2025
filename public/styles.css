@@ -100,3 +100,75 @@ footer {
 footer p {
     font-size: 0.9rem;
 }
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative; /* For positioning the close button */
+    background: #fff;
+    color: #000;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.modal-content label.radio-inline {
+    display: inline-block; /* Make labels inline */
+    margin-right: 1rem;
+    font-size: 1rem;
+}
+
+.close {
+    position: absolute; /* Position in the top-left corner */
+    top: 0.5rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #000;
+    background: transparent;
+    border: none;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    color: #b22222;
+}
+
+.modal-content label {
+    display: block;
+    margin: 1rem 0 0.5rem;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 0.75rem 1.5rem;
+    background: #b22222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background: #ff6347;
+}

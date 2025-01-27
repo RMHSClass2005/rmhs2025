@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMHS Class of 2005 - 20-Year Reunion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header style="background-image: url('../images/rmhs_photo.jpg'); background-size: cover; background-position: center; color: white; text-shadow: 2px 2px 5px black; padding: 2rem 1rem; text-align: center;">
+    <h1>Reading Memorial High School</h1>
+    <p>Class of 2005 - 20-Year Reunion</p>
+</header>
+<nav>
+    <a href="#about">About</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#contact">Contact</a>
+</nav>
+<div class="content" id="about">
+    <h2>Welcome Back!</h2>
+    <p>Join us as we celebrate 20 years since our graduation. Reconnect with classmates, share memories, and create new ones!</p>
+    <button class="cta-button" id="rsvp-button">RSVP Now</button>
+</div>
+<div class="content" id="schedule">
+    <h2>Event Schedule</h2>
+    <p>Stay tuned for an exciting lineup of activities and entertainment.</p>
+</div>
+<div class="content" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Reach out to us at reunion@rmhs2005.com</p>
+</div>
+<div class="modal" id="rsvp-modal">
+    <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>RSVP for the Reunion</h2>
+        <form id="rsvp-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label>Bringing a +1?</label>
+            <label class="radio-inline">
+                <input type="radio" id="plus-one-yes" name="plusOne" value="Yes"> Yes
+            </label>
+            <label class="radio-inline">
+                <input type="radio" id="plus-one-no" name="plusOne" value="No" checked> No
+            </label>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2025 RMHS Class of 2005. All Rights Reserved.</p>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
