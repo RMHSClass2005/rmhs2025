@@ -12,15 +12,19 @@
     <p>Class of 2005 - 20-Year Reunion</p>
 </header>
 <nav>
-    <a href="#about">About</a>
-    <a href="#schedule">Schedule</a>
     <a href="#rsvp">RSVP</a>
+    <a href="#schedule">Schedule</a>
     <a href="#contact">Contact</a>
 </nav>
-<div class="content" id="about">
+<div class="content" id="rsvp">
     <h2>Welcome Back!</h2>
     <p>Join us as we celebrate 20 years since our graduation. Reconnect with classmates, share memories, and create new ones!</p>
-    <button class="cta-button" id="rsvp-button">RSVP Now</button>
+    <div>
+        <button class="cta-button" id="rsvp-button">RSVP Now</button>
+    </div>
+    <div style="margin-top: 1rem">
+        <button class="cta-button" id="guestListButton">View Guest List</button>
+    </div>
 </div>
 <div class="content" id="schedule">
     <h2>Event Schedule</h2>
@@ -30,9 +34,10 @@
     <h2>Contact Us</h2>
     <p>Have questions? Reach out to us at reunion@rmhs2005.com</p>
 </div>
-<div class="modal" id="rsvp-modal">
-    <div class="modal-content">
-        <span class="close" id="close-modal">&times;</span>
+<!--RSVP Modal-->
+<div class="modal" id="modal">
+    <div class="modal-content" id="rsvpModalContent">
+        <span class="close" id="rsvpCloseModal">&times;</span>
         <h2>RSVP for the Reunion</h2>
         <div class="message success" id="success-message" style="display:none;">Your RSVP was successful!</div>
         <div class="message error" id="error-message" style="display:none;">There was an error submitting your RSVP. Please try again.</div>
@@ -53,6 +58,13 @@
 
             <button type="submit">Submit</button>
         </form>
+    </div>
+    <div class="modal-content" id="guestListModalContent">
+        <span id="guestListCloseModal" class="close">&times;</span>
+        <h2>Guest List</h2>
+        <div>
+            <div id="guest-list"></div> <!-- Guest list will be injected here -->
+        </div>
     </div>
 </div>
 <footer>
