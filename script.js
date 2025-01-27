@@ -29,10 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const plusOne = document.querySelector('input[name="plusOne"]:checked').value;
         const email = document.getElementById('email').value;
 
-        const data = `${name},${plusOne},${email}\n`;
+        const formData = { name, plusOne, email };
 
-        // Simulate saving to a CSV file (backend logic required)
-        console.log(data);
+        fetch('https://script.google.com/macros/s/AKfycbzX0NLCrMJptmO7tw3vZOtmjbVANSxHeQ9gJWMHAXBpVTajnEWrztaU3QXr--H84U0f/exec', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
 
         // Clear form and close modal
         rsvpForm.reset();
