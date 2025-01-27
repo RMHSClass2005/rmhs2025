@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: #000; /* Black background for contrast */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #b22222; /* Firebrick red */
+    padding: 1rem;
+    text-align: center;
+    color: #fff;
+}
+
+header img {
+    max-height: 100px;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1.3rem;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: #000; /* Black navigation bar */
+    padding: 0.5rem 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #b22222; /* Highlighted red */
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+    text-align: center;
+    background: #111; /* Darker background for content sections */
+    color: #fff;
+}
+
+.content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #b22222; /* Section headings in red */
+}
+
+.content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #b22222;
+    color: #fff;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #ff6347; /* Tomato red for hover effect */
+}
+
+footer {
+    text-align: center;
+    background: #000;
+    padding: 1rem;
+    color: #fff;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
