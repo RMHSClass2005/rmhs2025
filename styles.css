@@ -172,3 +172,21 @@ footer p {
 .modal-content button:hover {
     background: #ff6347;
 }
+
+.message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.success {
+    background-color: #28a745; /* Green for success */
+    color: #fff;
+}
+
+.error {
+    background-color: #dc3545; /* Red for error */
+    color: #fff;
+}
