@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = { name, plusOne, email };
 
-        fetch('https://script.google.com/macros/s/AKfycbzX0NLCrMJptmO7tw3vZOtmjbVANSxHeQ9gJWMHAXBpVTajnEWrztaU3QXr--H84U0f/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbwBOjRAPwyVvWscvJ_V6C42fQAs9FxZIRFC101eU8a35h1NQsXTjGPMf4mRZcmNV02_/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
