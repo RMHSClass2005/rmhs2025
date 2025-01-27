@@ -117,4 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching data: ', error));
     };
+
+// Handle form submission
+    const contactForm = document.getElementById('contact-form')
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Send the form data to EmailJS
+        emailjs.sendForm('rmhsclass2005', 'template_t8zgsc8', contactForm)
+            .then(function (response) {
+                console.log('Message sent successfully', response);
+                alert('Your message has been sent!');
+            }, function (error) {
+                console.log('Error sending message', error);
+                alert('Something went wrong. Please try again later.');
+            });
+    });
 });
+
