@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const id = 'AKfycbx3pR6CtxxB5UtDrSs1z7Unop3bp3lxksdPg0n4in1Qr6AeQrTBdpXGmCHdFEKqQoH6';
+    const id = 'AKfycbxUZ-jvClpEIVpD0ckiQAhGYNZvnaUG1f4ffIDa66x8aRbH89Da4NQQOkUd2uixc1_o';
     // Handle form submission
     rsvpForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -59,41 +59,48 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = document.getElementById('name').value;
         const plusOne = document.querySelector('input[name="plusOne"]:checked').value;
         const email = document.getElementById('email').value;
+        const file = document.getElementById('fileInput').files[0];
 
-        const formData = {name, plusOne, email};
-
-        fetch(`https://script.google.com/macros/s/${id}/exec`, {
-            redirect: "follow",
-            method: 'POST',
-            body: JSON.stringify(formData),
-            headers: {
-                'Content-Type': "text/plain;charset=utf-8"
-            }
-        })
-            .then(response => response.text())
-            .then(result => {
-                const res = JSON.parse(result);
-                console.log(res);
-                if (res.status === "success") {
-                    // Show success message
-                    successMessage.style.display = 'block';
-                    errorMessage.style.display = 'none';
-                    setTimeout(() => {
-                        // Clear form and close modal
-                        rsvpForm.reset();
-                        modal.style.display = 'none';
-                    }, 5000)
-                } else {
-                    // Show error message
+        const reader = new FileReader();
+        reader.onload = () => {
+            const base64File = reader.result.split(',')[1]; // Remove data URI prefix
+            const payload = {
+                name,
+                email,
+                plusOne,
+                file: base64File,
+            };
+            fetch(`https://script.google.com/macros/s/${id}/exec`, {
+                method: 'POST',
+                redirect: 'follow',
+                headers: {'Content-Type': 'text/plain;charset=utf-8'},
+                body: JSON.stringify(payload),
+            })
+                .then(response => response.text())
+                .then(result => {
+                    const res = JSON.parse(result);
+                    if (res.status === "success") {
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        setTimeout(() => {
+                            // Clear form and close modal
+                            rsvpForm.reset();
+                            modal.style.display = 'none';
+                        }, 5000)
+                    } else {
+                        // Show error message
+                        successMessage.style.display = 'none';
+                        errorMessage.style.display = 'block';
+                    }
+                })
+                .catch(() => {
+                    // In case of error during the fetch request
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'block';
-                }
-            })
-            .catch(() => {
-                // In case of error during the fetch request
-                successMessage.style.display = 'none';
-                errorMessage.style.display = 'block';
-            });
+                });
+        }
+        reader.readAsDataURL(file);
     });
 
     guestListButton.onclick = function () {
