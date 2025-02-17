@@ -21,10 +21,7 @@
     <p>Join us as we celebrate 20 years since our graduation. Reconnect with classmates, share memories, and create new
         ones!</p>
     <div>
-        <button class="cta-button" id="rsvp-button">RSVP Now</button>
-    </div>
-    <div style="margin-top: 1rem">
-        <button class="cta-button" id="guestListButton">View Guest List</button>
+        <button class="cta-button" id="where-button">Share What You're Up To!</button>
     </div>
 </div>
 <div class="content" id="schedule">
@@ -54,29 +51,22 @@
         </form>
     </div>
 </div>
-<!--RSVP Modal-->
+<!--Where Modal-->
 <div class="modal" id="modal">
-    <div class="modal-content" id="rsvpModalContent">
-        <span class="close" id="rsvpCloseModal">&times;</span>
-        <h2>RSVP for the Reunion</h2>
-        <div class="message success" id="success-message" style="display:none;">Your RSVP was successful!</div>
-        <div class="message error" id="error-message" style="display:none;">There was an error submitting your RSVP.
+    <div class="modal-content" id="whereModalContent">
+        <span class="close" id="whereCloseModal">&times;</span>
+        <h2>What are you up to?</h2>
+        <p>Tell us what you're up to and we'll include it in our class slide show!</p>
+        <div class="message success" id="success-message" style="display:none;">Your submission was successful!</div>
+        <div class="message error" id="error-message" style="display:none;">There was an error submitting.
             Please try again.
         </div>
-        <form id="rsvp-form">
+        <form id="where-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
-            <label>Bringing a +1?</label>
-            <label class="radio-inline">
-                <input type="radio" id="plus-one-yes" name="plusOne" value="Yes"> Yes
-            </label>
-            <label class="radio-inline">
-                <input type="radio" id="plus-one-no" name="plusOne" value="No" checked> No
-            </label>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="description">What are you up to? (1-2 sentences)</label>
+            <textarea id="description" name="description" required> </textarea>
 
             <div>
                 <label>Upload a Photo (Will be used in our slideshow - Optional)</label>
@@ -85,13 +75,6 @@
 
             <button type="submit">Submit</button>
         </form>
-    </div>
-    <div class="modal-content" id="guestListModalContent">
-        <span id="guestListCloseModal" class="close">&times;</span>
-        <h2>Guest List</h2>
-        <div>
-            <div id="guest-list"></div> <!-- Guest list will be injected here -->
-        </div>
     </div>
 </div>
 <footer>

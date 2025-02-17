@@ -1,30 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const rsvpButton = document.getElementById('rsvp-button');
-    const guestListButton = document.getElementById('guestListButton')
+    const whereButton = document.getElementById('where-button');
     const modal = document.getElementById('modal');
-    const rsvpModalContent = document.getElementById('rsvpModalContent');
-    const guestListModalContent = document.getElementById('guestListModalContent');
-    const rsvpCloseModal = document.getElementById('rsvpCloseModal');
-    const guestListCloseModal = document.getElementById('guestListCloseModal');
-    const rsvpForm = document.getElementById('rsvp-form');
+    const whereModalContent = document.getElementById('whereModalContent');
+    const whereCloseModal = document.getElementById('whereCloseModal');
+    const whereForm = document.getElementById('where-form');
     const successMessage = document.getElementById('success-message');
     const errorMessage = document.getElementById('error-message');
 
-    // Open rsvp modal
-    rsvpButton.addEventListener('click', () => {
+    // Open Where modal
+    whereButton.addEventListener('click', () => {
         modal.style.display = 'flex';
-        rsvpModalContent.style.display = 'block';
-        guestListModalContent.style.display = 'none';
-        // Hide previous messages
-        successMessage.style.display = 'none';
-        errorMessage.style.display = 'none';
-    });
-
-    // Open guest list modal
-    guestListButton.addEventListener('click', () => {
-        modal.style.display = 'flex';
-        guestListModalContent.style.display = 'block';
-        rsvpModalContent.style.display = 'none';
+        whereModalContent.style.display = 'block';
         // Hide previous messages
         successMessage.style.display = 'none';
         errorMessage.style.display = 'none';
@@ -34,16 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'none';
         successMessage.style.display = 'none'; // Hide previous messages
         errorMessage.style.display = 'none';
-        rsvpForm.reset();
+        whereForm.reset();
     }
 
     // Close modal when clicking the close button
-    rsvpCloseModal.addEventListener('click', () => {
+    whereCloseModal.addEventListener('click', () => {
         closeModal()
     });
-    guestListCloseModal.addEventListener('click', () => {
-        closeModal()
-    })
+
     // Close modal when clicking outside modal content
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -51,14 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const id = 'AKfycbxUZ-jvClpEIVpD0ckiQAhGYNZvnaUG1f4ffIDa66x8aRbH89Da4NQQOkUd2uixc1_o';
+    const id = 'AKfycbxVHwABILxB88KJsyxzXzOpWOS-k3LFT46S276LA8qTAH-ytLgXWBNEaSjlS5olgrDk';
     // Handle form submission
-    rsvpForm.addEventListener('submit', (e) => {
+    whereForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         const name = document.getElementById('name').value;
-        const plusOne = document.querySelector('input[name="plusOne"]:checked').value;
-        const email = document.getElementById('email').value;
+        const description = document.getElementById('description').value;
         const file = document.getElementById('fileInput').files[0];
 
         const reader = new FileReader();
@@ -66,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const base64File = reader.result.split(',')[1]; // Remove data URI prefix
             const payload = {
                 name,
-                email,
-                plusOne,
+                description,
                 file: base64File,
             };
             fetch(`https://script.google.com/macros/s/${id}/exec`, {
@@ -85,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         errorMessage.style.display = 'none';
                         setTimeout(() => {
                             // Clear form and close modal
-                            rsvpForm.reset();
+                            whereForm.reset();
                             modal.style.display = 'none';
                         }, 5000)
                     } else {
@@ -102,28 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         reader.readAsDataURL(file);
     });
-
-    guestListButton.onclick = function () {
-        // Fetch the guest list
-        fetch(`https://script.google.com/macros/s/${id}/exec`)
-            .then(response => response.json())
-            .then(data => {
-                const guestListDiv = document.getElementById('guest-list');
-                guestListDiv.innerHTML = ''; // Clear any previous content
-
-                // Populate the modal with the guest list
-                data.forEach(guest => {
-                    const guestItem = document.createElement('p');
-                    guestItem.classList.add('guest-item');
-                    guestItem.innerHTML = `${guest.name} ${guest.bringingPlusOne.toLowerCase() === "yes" ? '+1' : ''}`;
-                    guestListDiv.appendChild(guestItem);
-                });
-
-                // Show the modal
-                document.getElementById('guestListModal').style.display = 'block';
-            })
-            .catch(error => console.error('Error fetching data: ', error));
-    };
 
 // Handle form submission
     const contactForm = document.getElementById('contact-form')
