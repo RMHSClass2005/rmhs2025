@@ -54,6 +54,25 @@ nav a {
     transition: color 0.3s ease;
 }
 
+.content[id] {
+    scroll-margin-top: 40px; /* or whatever your nav height is */
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+    }
+
+    nav a {
+        margin: 0.5rem;
+        font-size: 1rem;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+}
+
 nav a:hover {
     color: #b22222; /* Highlighted red */
 }
@@ -239,6 +258,13 @@ footer p {
 
 .modal-content button[type="submit"]:hover {
     background-color: #ff6347;
+}
+
+.modal-content button:disabled,
+.modal-content button.disabled {
+    background-color: #555 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 

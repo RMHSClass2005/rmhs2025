@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     whereForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
+        // Disable the submit button
+        const submitBtn = document.getElementById('modalSubmitButton');
+        submitBtn.disabled = true;
+        submitBtn.classList.add('disabled');
+        submitBtn.textContent = 'Submitting, please wait...';
+
         const name = document.getElementById('name').value;
         const description = document.getElementById('description').value;
         const file = document.getElementById('fileInput').files[0];
@@ -52,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description,
                 file: base64File,
             };
+
             fetch(`https://script.google.com/macros/s/${id}/exec`, {
                 method: 'POST',
                 redirect: 'follow',
@@ -62,28 +69,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(result => {
                     const res = JSON.parse(result);
                     if (res.status === "success") {
-                        // Show success message
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         setTimeout(() => {
-                            // Clear form and close modal
                             whereForm.reset();
                             modal.style.display = 'none';
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('disabled');
+                            submitBtn.textContent = 'Submit';
                         }, 5000)
                     } else {
-                        // Show error message
                         successMessage.style.display = 'none';
                         errorMessage.style.display = 'block';
                     }
                 })
                 .catch(() => {
-                    // In case of error during the fetch request
                     successMessage.style.display = 'none';
                     errorMessage.style.display = 'block';
-                });
-        }
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('disabled');
+                    submitBtn.textContent = 'Submit';
+                })
+        };
         reader.readAsDataURL(file);
     });
+
 
 // Handle form submission
     const contactForm = document.getElementById('contact-form')
