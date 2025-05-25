@@ -102,3 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Add a preview for the file upload
+document.addEventListener("DOMContentLoaded", () => {
+    const fileInput = document.getElementById("fileInput");
+    const previewContainer = document.getElementById("filePreview");
+
+    fileInput.addEventListener("change", () => {
+        previewContainer.innerHTML = ""; // Clear previous
+
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        if (file.type.startsWith("image/")) {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(file);
+            img.alt = "Image preview";
+            img.style.maxWidth = "100%";
+            img.style.maxHeight = "200px";
+            img.style.marginTop = "0.5rem";
+            previewContainer.appendChild(img);
+        } else {
+            const text = document.createElement("p");
+            text.textContent = `Selected file: ${file.name}`;
+            previewContainer.appendChild(text);
+        }
+    });
+});

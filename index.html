@@ -17,11 +17,24 @@
     <a href="#contact">Contact</a>
 </nav>
 <div class="content" id="rsvp">
-    <h2>Welcome Back!</h2>
+    <h2>Welcome!</h2>
     <p>Join us as we celebrate 20 years since our graduation. Reconnect with classmates, share memories, and create new
         ones!</p>
     <div>
-        <button class="cta-button" id="where-button">Share What You're Up To!</button>
+        <div id="eventbrite-widget-container-1344424472789"></div>
+        <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
+        <script type="text/javascript">
+            window.EBWidgets.createWidget({
+                widgetType: "checkout",
+                eventId: "1344424472789",
+                modal: false,
+                iframeContainerId: "eventbrite-widget-container-1344424472789"
+            });
+        </script>
+        <p>Want to be featured in the class slideshow?</p>
+        <div>
+            <button class="cta-button" id="where-button">Share What You're Up To!</button>
+        </div>
     </div>
 </div>
 <div class="content" id="schedule">
@@ -51,7 +64,7 @@
         </form>
     </div>
 </div>
-<!--Where Modal-->
+<!--Share What You're Up To Modal-->
 <div class="modal" id="modal">
     <div class="modal-content" id="whereModalContent">
         <span class="close" id="whereCloseModal">&times;</span>
@@ -69,8 +82,10 @@
             <textarea id="description" name="description" required> </textarea>
 
             <div>
-                <label>Upload a Photo (Will be used in our slideshow - Optional)</label>
-                <input type="file" id="fileInput" name="file"/>
+                <label>Upload a Photo (Optional – used in slideshow):</label>
+                <label for="fileInput" class="file-upload-label">Choose a File</label>
+                <input type="file" id="fileInput" name="file" accept="image/*">
+                <div id="filePreview" style="margin-top: 1rem;"></div>
             </div>
 
             <button type="submit">Submit</button>

@@ -76,6 +76,7 @@ nav a:hover {
 
 .cta-button {
     display: inline-block;
+    cursor: pointer;
     padding: 0.75rem 1.5rem;
     background: #b22222;
     color: #fff;
@@ -102,76 +103,139 @@ footer p {
 }
 
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.8);
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 4rem; /* or adjust to your liking */
+    padding-bottom: 4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    overflow: auto;
+    z-index: 1000;
 }
 
 .modal-content {
-    position: relative; /* For positioning the close button */
-    background: #fff;
-    color: #000;
+    position: relative;
+    background: #111; /* Dark modal background */
+    color: #fff;
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 12px;
     width: 90%;
-    max-width: 500px;
-    text-align: center;
+    max-width: 600px;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    border: 1px solid #b22222;
 }
 
-.modal-content label.radio-inline {
-    display: inline-block; /* Make labels inline */
-    margin-right: 1rem;
-    font-size: 1rem;
-}
-
-.close {
-    position: absolute; /* Position in the top-left corner */
-    top: 0.5rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #000;
-    background: transparent;
+/* Close button */
+.modal-content .close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff;
+    background: none;
     border: none;
+    cursor: pointer;
+    z-index: 10;
 }
 
+/* Headings & text */
 .modal-content h2 {
-    margin-bottom: 1rem;
-    color: #b22222;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    color: #ff6347;
+}
+
+.modal-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #ccc;
 }
 
 .modal-content label {
     display: block;
     margin: 1rem 0 0.5rem;
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
 }
 
+/* Inputs */
 .modal-content input[type="text"],
-.modal-content input[type="email"] {
+.modal-content textarea {
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 0.75rem;
+    background: #000;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s ease;
 }
 
-.modal-content button {
+.modal-content input[type="text"]:focus,
+.modal-content textarea:focus {
+    border-color: #b22222;
+    outline: none;
+}
+
+.modal-content textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* File Upload */
+.modal-content input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #b22222;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #ff6347;
+}
+
+/* Submit Button */
+.modal-content button[type="submit"] {
+    margin-top: 1.5rem;
     padding: 0.75rem 1.5rem;
     background: #b22222;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
     cursor: pointer;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
-.modal-content button:hover {
-    background: #ff6347;
+.modal-content button[type="submit"]:hover {
+    background-color: #ff6347;
 }
+
 
 .message {
     margin-top: 20px;
@@ -189,4 +253,83 @@ footer p {
 .error {
     background-color: #dc3545; /* Red for error */
     color: #fff;
+}
+
+/* Contact Form Section */
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #000; /* Match site background */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    border: 1px solid #b22222;
+    text-align: left;
+}
+
+#contact-form div {
+    margin-bottom: 1.5rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #111;
+    color: #fff;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    border-color: #b22222;
+    outline: none;
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button[type="submit"] {
+    display: inline-block;
+    background-color: #b22222;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button[type="submit"]:hover {
+    background-color: #ff6347;
+}
+
+#filePreview {
+    text-align: center;
+}
+
+#filePreview img {
+    display: block;
+    margin: 0.5rem auto 0;
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 1px solid #444;
 }
