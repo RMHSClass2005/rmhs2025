@@ -37,10 +37,13 @@ header p {
 }
 
 nav {
+    position: sticky;
     display: flex;
+    top: 0;
     justify-content: center;
-    background: #000; /* Black navigation bar */
     padding: 0.5rem 0;
+    z-index: 100;
+    background: #000; /* Black navigation bar */
 }
 
 nav a {
@@ -152,12 +155,14 @@ footer p {
     margin-bottom: 0.5rem;
     font-size: 1.8rem;
     color: #ff6347;
+    text-align: center;
 }
 
 .modal-content p {
     font-size: 1rem;
     margin-bottom: 1.5rem;
     color: #ccc;
+    text-align: center;
 }
 
 .modal-content label {
