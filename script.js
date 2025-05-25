@@ -17,10 +17,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function closeModal() {
+        const submitBtn = document.getElementById('modalSubmitButton');
         modal.style.display = 'none';
         successMessage.style.display = 'none'; // Hide previous messages
         errorMessage.style.display = 'none';
         whereForm.reset();
+        document.getElementById('fileInput').value = '';
+        document.getElementById('filePreview').innerHTML = '';
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('disabled');
+        submitBtn.textContent = 'Submit'
     }
 
     // Close modal when clicking the close button
@@ -72,11 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         setTimeout(() => {
-                            whereForm.reset();
-                            modal.style.display = 'none';
-                            submitBtn.disabled = false;
-                            submitBtn.classList.remove('disabled');
-                            submitBtn.textContent = 'Submit';
+                            closeModal()
                         }, 5000)
                     } else {
                         successMessage.style.display = 'none';
