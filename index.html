@@ -54,7 +54,7 @@
                 const loading = document.getElementById('eventbrite-loading');
                 const fallback = document.getElementById('eventbrite-fallback');
 
-                let iframeLoaded = false;
+                let widgetInitialized = false;
 
                 window.EBWidgets.createWidget({
                     widgetType: 'checkout',
@@ -64,29 +64,27 @@
                     onOrderComplete: exampleCallback
                 });
 
-                // Detect when iframe is inserted
                 const observer = new MutationObserver(() => {
                     const iframe = container.querySelector('iframe');
-                    if (iframe) {
-                        iframe.onload = () => {
-                            iframeLoaded = true;
-                            loading.style.display = 'none';
-                            container.style.display = 'block';
-                            fallback.style.display = 'none';
-                        };
+                    if (iframe && iframe.offsetHeight > 0) {
+                        widgetInitialized = true;
+                        loading.style.display = 'none';
+                        container.style.display = 'block';
+                        fallback.style.display = 'none';
                         observer.disconnect();
                     }
                 });
 
-                observer.observe(container, { childList: true });
+                observer.observe(container, { childList: true, subtree: true });
 
-                // Fallback timeout if iframe never loads
+                // Timeout fallback after 10 seconds
                 setTimeout(() => {
-                    if (!iframeLoaded) {
+                    if (!widgetInitialized) {
                         loading.style.display = 'none';
                         fallback.style.display = 'block';
+                        console.warn("Eventbrite widget failed to load after 10s.");
                     }
-                }, 10000); // 10 seconds
+                }, 10000);
             });
         </script>
     </div>
