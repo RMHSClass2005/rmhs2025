@@ -296,14 +296,23 @@ footer p {
     text-align: center;
 }
 
-.success {
-    background-color: #28a745; /* Green for success */
-    color: #fff;
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
 }
 
-.error {
-    background-color: #dc3545; /* Red for error */
-    color: #fff;
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
 }
 
 /* Contact Form Section */

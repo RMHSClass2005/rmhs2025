@@ -102,20 +102,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Handle contact form submission
-    const contactForm = document.getElementById('contact-form')
+    const contactForm = document.getElementById('contact-form');
+    const contactSuccess = document.getElementById('contact-success');
+    const contactError = document.getElementById('contact-error');
+
     contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // Send the form data to EmailJS
         emailjs.sendForm('rmhsclass2005', 'template_t8zgsc8', contactForm)
             .then(function (response) {
                 console.log('Message sent successfully', response);
-                alert('Your message has been sent!');
+                contactSuccess.style.display = 'block';
+                contactError.style.display = 'none';
+                contactForm.reset();
+
+                setTimeout(() => {
+                    contactSuccess.style.display = 'none';
+                }, 5000);
             }, function (error) {
                 console.log('Error sending message', error);
-                alert('Something went wrong. Please try again later.');
+                contactSuccess.style.display = 'none';
+                contactError.style.display = 'block';
+
+                setTimeout(() => {
+                    contactError.style.display = 'none';
+                }, 5000);
             });
     });
+
 
     // Add a preview for the file upload
     const fileInput = document.getElementById("fileInput");
