@@ -41,8 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const id = 'AKfycbxVHwABILxB88KJsyxzXzOpWOS-k3LFT46S276LA8qTAH-ytLgXWBNEaSjlS5olgrDk';
-    // Handle form submission
+    const devId = 'AKfycbxmZnWXP4xQa-fV9MFidR_cDMudx2BjJN6PaUtDZlXlap0BiUiWcu9-V6ySjkZMlWgc'; // dev (localhost)
+    // const prodId = 'YOUR_NEW_PROD_SCRIPT_ID_HERE'; // production (rmhs05alumni.com)
+    // const id = location.hostname === 'localhost' ? devId : prodId;
+    const id = devId;
+
+    // Handle what are you up to form submission
     whereForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -97,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-// Handle form submission
+    // Handle contact form submission
     const contactForm = document.getElementById('contact-form')
     contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -112,10 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Something went wrong. Please try again later.');
             });
     });
-});
 
-// Add a preview for the file upload
-document.addEventListener("DOMContentLoaded", () => {
+    // Add a preview for the file upload
     const fileInput = document.getElementById("fileInput");
     const previewContainer = document.getElementById("filePreview");
 
