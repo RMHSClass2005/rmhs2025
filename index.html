@@ -24,67 +24,24 @@
     <div>
         <div class="ticket-widget-container">
             <h3>Buy Your Reunion Ticket</h3>
-
-            <!-- Loading indicator -->
-            <div id="eventbrite-loading">
-                <div class="spinner"></div>
-                <p>Loading Eventbrite Widget...</p>
-            </div>
-
-            <div id="eventbrite-fallback" style="display: none; text-align: center; color: #aa0000; font-style: italic;">
-                We're having trouble loading the ticket form.
-            </div>
-
-            <!-- Hidden initially -->
-            <div id="eventbrite-widget-container-1344424472789" style="display: none;"></div>
-
+            <div id="eventbrite-widget-container-1344424472789"></div>
             <p style="text-align: center; margin-top: 1rem;">
-                <a href="https://RMHS05-20-year.eventbrite.com" target="_blank" rel="noopener noreferrer">
-                Visit our Eventbrite page directly</a>.
+                Or <a href="https://RMHS05-20-year.eventbrite.com" target="_blank" rel="noopener noreferrer">Or go to our Eventbrite page directly</a>.
             </p>
         </div>
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
-            const exampleCallback = function () {
+            const exampleCallback = function() {
                 console.log('Order complete!');
             };
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const container = document.getElementById('eventbrite-widget-container-1344424472789');
-                const loading = document.getElementById('eventbrite-loading');
-                const fallback = document.getElementById('eventbrite-fallback');
+            window.EBWidgets.createWidget({
+                widgetType: 'checkout',
+                eventId: '1344424472789',
+                iframeContainerId: 'eventbrite-widget-container-1344424472789',
 
-                let widgetInitialized = false;
-
-                window.EBWidgets.createWidget({
-                    widgetType: 'checkout',
-                    eventId: '1344424472789',
-                    iframeContainerId: 'eventbrite-widget-container-1344424472789',
-                    iframeContainerHeight: 425,
-                    onOrderComplete: exampleCallback
-                });
-
-                const observer = new MutationObserver(() => {
-                    const iframe = container.querySelector('iframe');
-                    if (iframe && iframe.offsetHeight > 0) {
-                        widgetInitialized = true;
-                        loading.style.display = 'none';
-                        container.style.display = 'block';
-                        fallback.style.display = 'none';
-                        observer.disconnect();
-                    }
-                });
-
-                observer.observe(container, { childList: true, subtree: true });
-
-                // Timeout fallback after 10 seconds
-                setTimeout(() => {
-                    if (!widgetInitialized) {
-                        loading.style.display = 'none';
-                        fallback.style.display = 'block';
-                        console.warn("Eventbrite widget failed to load after 10s.");
-                    }
-                }, 10000);
+                iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+                onOrderComplete: exampleCallback  // Method called when an order has successfully completed
             });
         </script>
     </div>
