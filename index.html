@@ -24,24 +24,69 @@
     <div>
         <div class="ticket-widget-container">
             <h3>Buy Your Reunion Ticket</h3>
-            <div id="eventbrite-widget-container-1344424472789"></div>
+
+            <!-- Loading indicator -->
+            <div id="eventbrite-loading">
+                <div class="spinner"></div>
+                <p>Loading Eventbrite Widget...</p>
+            </div>
+
+            <div id="eventbrite-fallback" style="display: none; text-align: center; color: #aa0000; font-style: italic;">
+                We're having trouble loading the ticket form.
+            </div>
+
+            <!-- Hidden initially -->
+            <div id="eventbrite-widget-container-1344424472789" style="display: none;"></div>
+
             <p style="text-align: center; margin-top: 1rem;">
-                Or <a href="https://RMHS05-20-year.eventbrite.com" target="_blank" rel="noopener noreferrer">Or go to our Eventbrite page directly</a>.
+                <a href="https://RMHS05-20-year.eventbrite.com" target="_blank" rel="noopener noreferrer">
+                Visit our Eventbrite page directly</a>.
             </p>
         </div>
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
-            const exampleCallback = function() {
+            const exampleCallback = function () {
                 console.log('Order complete!');
             };
 
-            window.EBWidgets.createWidget({
-                widgetType: 'checkout',
-                eventId: '1344424472789',
-                iframeContainerId: 'eventbrite-widget-container-1344424472789',
+            window.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('eventbrite-widget-container-1344424472789');
+                const loading = document.getElementById('eventbrite-loading');
+                const fallback = document.getElementById('eventbrite-fallback');
 
-                iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-                onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+                let iframeLoaded = false;
+
+                window.EBWidgets.createWidget({
+                    widgetType: 'checkout',
+                    eventId: '1344424472789',
+                    iframeContainerId: 'eventbrite-widget-container-1344424472789',
+                    iframeContainerHeight: 425,
+                    onOrderComplete: exampleCallback
+                });
+
+                // Detect when iframe is inserted
+                const observer = new MutationObserver(() => {
+                    const iframe = container.querySelector('iframe');
+                    if (iframe) {
+                        iframe.onload = () => {
+                            iframeLoaded = true;
+                            loading.style.display = 'none';
+                            container.style.display = 'block';
+                            fallback.style.display = 'none';
+                        };
+                        observer.disconnect();
+                    }
+                });
+
+                observer.observe(container, { childList: true });
+
+                // Fallback timeout if iframe never loads
+                setTimeout(() => {
+                    if (!iframeLoaded) {
+                        loading.style.display = 'none';
+                        fallback.style.display = 'block';
+                    }
+                }, 10000); // 10 seconds
             });
         </script>
     </div>
