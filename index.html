@@ -22,22 +22,47 @@
     <p>Join us as we celebrate 20 years since our graduation. Reconnect with classmates, share memories, and create new
         ones!</p>
     <div>
-        <div id="eventbrite-widget-container-1344424472789"></div>
+        <div class="ticket-widget-container">
+            <h3>Buy Your Reunion Ticket</h3>
+            <div id="eventbrite-loading">Loading Eventbrite Widget...</div>
+            <div id="eventbrite-widget-container-1344424472789" style="display:none;"></div>
+            <p style="text-align: center; margin-top: 1rem;">
+                Or <a href="https://RMHS05-20-year.eventbrite.com" target="_blank" rel="noopener noreferrer">Or go to our Eventbrite page directly</a>.
+            </p>
+        </div>
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
-            const exampleCallback = function() {
+            const exampleCallback = function () {
                 console.log('Order complete!');
             };
 
-            window.EBWidgets.createWidget({
-                widgetType: 'checkout',
-                eventId: '1344424472789',
-                iframeContainerId: 'eventbrite-widget-container-1344424472789',
+            window.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('eventbrite-widget-container-1344424472789');
+                const loading = document.getElementById('eventbrite-loading');
 
-                iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
-                onOrderComplete: exampleCallback  // Method called when an order has successfully completed
+                window.EBWidgets.createWidget({
+                    widgetType: 'checkout',
+                    eventId: '1344424472789',
+                    iframeContainerId: 'eventbrite-widget-container-1344424472789',
+                    iframeContainerHeight: 425,
+                    onOrderComplete: exampleCallback
+                });
+
+                // Wait for iframe to load before showing
+                const observer = new MutationObserver(() => {
+                    const iframe = container.querySelector('iframe');
+                    if (iframe) {
+                        iframe.onload = () => {
+                            loading.style.display = 'none';
+                            container.style.display = 'block';
+                        };
+                    }
+                });
+
+                observer.observe(container, { childList: true });
             });
         </script>
+
     </div>
 </div>
 <div class="content" id="slideshow">

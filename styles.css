@@ -81,6 +81,28 @@ nav a:hover {
     color: #b22222; /* Highlighted red */
 }
 
+.ticket-widget-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.ticket-widget-container h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #aa0000;
+}
+
+#eventbrite-loading {
+    font-style: italic;
+    color: #666;
+    margin: 1rem 0;
+}
+
 .content {
     flex: 1;
     padding: 2rem;
