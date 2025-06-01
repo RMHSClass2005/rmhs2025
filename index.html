@@ -32,37 +32,19 @@
         </div>
         <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         <script type="text/javascript">
-            const exampleCallback = function () {
+            const exampleCallback = function() {
                 console.log('Order complete!');
             };
 
-            window.addEventListener('DOMContentLoaded', () => {
-                const container = document.getElementById('eventbrite-widget-container-1344424472789');
-                const loading = document.getElementById('eventbrite-loading');
+            window.EBWidgets.createWidget({
+                widgetType: 'checkout',
+                eventId: '1344424472789',
+                iframeContainerId: 'eventbrite-widget-container-1344424472789',
 
-                window.EBWidgets.createWidget({
-                    widgetType: 'checkout',
-                    eventId: '1344424472789',
-                    iframeContainerId: 'eventbrite-widget-container-1344424472789',
-                    iframeContainerHeight: 425,
-                    onOrderComplete: exampleCallback
-                });
-
-                // Wait for iframe to load before showing
-                const observer = new MutationObserver(() => {
-                    const iframe = container.querySelector('iframe');
-                    if (iframe) {
-                        iframe.onload = () => {
-                            loading.style.display = 'none';
-                            container.style.display = 'block';
-                        };
-                    }
-                });
-
-                observer.observe(container, { childList: true });
+                iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+                onOrderComplete: exampleCallback  // Method called when an order has successfully completed
             });
         </script>
-
     </div>
 </div>
 <div class="content" id="slideshow">
