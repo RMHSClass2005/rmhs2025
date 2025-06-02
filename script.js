@@ -42,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const devId = 'AKfycbxmZnWXP4xQa-fV9MFidR_cDMudx2BjJN6PaUtDZlXlap0BiUiWcu9-V6ySjkZMlWgc'; // dev (localhost)
-    // const prodId = 'YOUR_NEW_PROD_SCRIPT_ID_HERE'; // production (rmhs05alumni.com)
-    // const id = location.hostname === 'localhost' ? devId : prodId;
-    const id = devId;
+    const prodId = 'AKfycbxcyRrKY5KXgu8FqsBWM8a5gBlYNCZ3j5f01tD4p-z6HUB7xNvcgmRSu4qOzcP6yBPR'; // production (rmhs05alumni.com)
+    const id = location.hostname === 'localhost' ? devId : prodId;
 
     // Handle what are you up to form submission
     whereForm.addEventListener('submit', (e) => {
