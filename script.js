@@ -108,7 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
-        emailjs.sendForm('rmhsclass2005', 'template_t8zgsc8', contactForm)
+        const template = location.hostname === 'localhost' ? 'template_t8zgsc8' : 'template_fxtfobb';
+
+        emailjs.sendForm('gmail', template, contactForm)
             .then(function (response) {
                 console.log('Message sent successfully', response);
                 contactSuccess.style.display = 'block';
