@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const template = location.hostname === 'localhost' ? 'template_t8zgsc8' : 'template_fxtfobb';
 
-        emailjs.sendForm('gmail', template, contactForm)
+        emailjs.sendForm('rmhsclass2005', template, contactForm)
             .then(function (response) {
                 console.log('Message sent successfully', response);
                 contactSuccess.style.display = 'block';
