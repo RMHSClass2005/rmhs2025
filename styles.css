@@ -315,6 +315,51 @@ footer p {
     border-radius: 4px;
 }
 
+.faq-item {
+    margin-bottom: 1rem;
+    text-align: left;
+    border: 1px solid #b22222;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #111;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background-color: #d03a3a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #ff6347;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 1rem;
+    background-color: #111;
+}
+
+.faq-answer p {
+    margin: 1rem 0;
+    color: #ccc;
+}
+
+.faq-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
 /* Contact Form Section */
 #contact-form {
     max-width: 600px;
