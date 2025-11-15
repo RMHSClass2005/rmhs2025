@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Reunion Photos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="uploadStyle.css">
+</head>
+<body class="upload-page">
+<div class="content upload-content">
+    <h1>Share Your Reunion Photos &amp; Videos</h1>
+    <p class="upload-tagline">
+        Tap the box below to add photos or videos from the night.
+    </p>
+
+    <!-- Big tap target -->
+    <div id="dropzone" class="upload-dropzone">
+        <p class="upload-main-text">Tap here to choose photos/videos</p>
+        <p class="upload-subtext">(You can select multiple)</p>
+    </div>
+
+    <!-- Hidden real input -->
+    <input id="fileInput" type="file" accept="image/*,video/*" multiple style="display:none;">
+
+    <!-- File count + upload button -->
+    <p id="fileCount" class="file-count">No files selected yet</p>
+    <button id="uploadBtn" class="upload-button" disabled>Upload</button>
+
+    <div id="status" class="upload-status"></div>
+
+    <hr class="upload-divider">
+
+    <!-- Link to view Google Drive folder -->
+    <a
+            href="https://drive.google.com/drive/u/3/folders/1KaS7ThY90Z67JbVOBa835VAKLO91fSjF"
+            class="view-photos-button"
+            target="_blank"
+            rel="noopener noreferrer"
+    >
+        View All Event Photos on Google Drive
+    </a>
+</div>
+
+<script src="upload.js"></script>
+</body>
+</html>

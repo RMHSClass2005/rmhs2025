@@ -1,0 +1,164 @@
+/* Page layout */
+.upload-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #000;              /* black background */
+    color: #fff;                   /* white text */
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.upload-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem 1.5rem 3rem;
+}
+
+.upload-content h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.9rem;
+    color: #ff4b4b;                /* RMHS red */
+}
+
+.upload-tagline {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+}
+
+/* Big tap target */
+.upload-dropzone {
+    margin: 1.5rem auto;
+    width: 90%;
+    max-width: 420px;
+    height: 230px;
+    border-radius: 20px;
+    border: 3px dashed #ff4b4b;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition:
+            border-color 0.2s ease,
+            background-color 0.2s ease,
+            transform 0.08s ease,
+            box-shadow 0.15s ease;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.upload-dropzone:hover {
+    border-color: #ff6b6b;
+    background-color: #181818;
+    box-shadow: 0 0 18px rgba(255, 75, 75, 0.35);
+}
+
+.upload-dropzone:active {
+    transform: scale(0.97);
+}
+
+.upload-main-text {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.upload-subtext {
+    font-size: 0.85rem;
+    color: #bbbbbb;
+    margin-top: 0.35rem;
+}
+
+/* Buttons & status */
+.upload-button {
+    margin-top: 1rem;
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background-color: #ff4b4b;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    transition:
+            background-color 0.15s ease,
+            transform 0.08s ease,
+            box-shadow 0.15s ease;
+}
+
+.upload-button:hover:not(:disabled) {
+    background-color: #ff6b6b;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
+}
+
+.upload-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.upload-button:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+}
+
+.file-count {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: #f0f0f0;
+}
+
+.upload-status {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    min-height: 1.2em;
+}
+
+/* Drive link button */
+.upload-divider {
+    margin: 2.5rem auto 1.5rem;
+    border: none;
+    border-top: 1px solid #333;
+    max-width: 420px;
+}
+
+.view-photos-button {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background-color: #d32f2f;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    transition:
+            background-color 0.15s ease,
+            transform 0.08s ease,
+            box-shadow 0.15s ease;
+}
+
+.view-photos-button:hover {
+    background-color: #f44336;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.75);
+}
+
+.view-photos-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    .upload-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .upload-dropzone {
+        height: 210px;
+    }
+}
