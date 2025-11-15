@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusEl  = document.getElementById('status');
 
     const devId  = 'AKfycbwRcAWpHqrhklzVdKz-KHUBMwvhfJAzemITd8O-cNkBZrIYSj4hpt2UXjhLXX_F4bA-';
-    const prodId = 'YOUR_PROD_DEPLOYMENT_ID';
+    const prodId = 'AKfycbzqrddVkMWpYTIMo11IE4IOruY4s9w4um-T7hKTtCqs3S3QwaznomTqkTHLmMBmfyLQ';
     const scriptId = location.hostname === 'localhost' ? devId : prodId;
 
     function updateFileCount() {
