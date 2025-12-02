@@ -455,3 +455,14 @@ footer p {
     border-radius: 4px;
     height: 24px;
 }
+
+.yearbook-wrapper {
+    max-width: 900px;
+    margin: 0 auto;   /* center */
+}
+
+.fb-icon {
+    background: white;
+    border-radius: 6px; /* optional: soft rounded corners */
+    height: 32px;       /* match your Instagram height */
+}
